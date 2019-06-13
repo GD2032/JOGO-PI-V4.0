@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class playerBehaviour : CountTime
 {
     [SerializeField]
-    private ShowAfter appear;
+    //private ShowAfter appear;
     // RectTransform m_RectTransform;
     private int[] Vidas = new int[3] { 1, 1, 1 };
     [SerializeField]
@@ -45,8 +45,8 @@ public class playerBehaviour : CountTime
     public AudioClip Vazio;
 
     private float xmax = 9.43f;
-    private float ymax = 9.04f;
-    private float ymin;
+    private float ymax = 5.7f;
+    private float ymin = -9.04f;
     private GameObject laser;
     private GameObject boca;
     private float movimentoEixoX;
@@ -205,9 +205,9 @@ public class playerBehaviour : CountTime
         {
             transform.position = new Vector3(transform.position.x, ymax);
         }
-        if (transform.position.y < -ymax)
+        if (transform.position.y < ymin)
         {
-            transform.position = new Vector3(transform.position.x, -ymax);
+            transform.position = new Vector3(transform.position.x, ymin);
         }
     }
     void OnTriggerEnter2D(Collider2D colapse)
@@ -282,9 +282,9 @@ public class playerBehaviour : CountTime
         gameOver.SetActive(true);
         yield return new WaitForSeconds(10f);
         CarregarMenuInicial("Titlescreen");
-        appear.gameObject.SetActive(false);
-        Time.timeScale = 0f; 
-        GetComponent<RectTransform>().anchoredPosition = new Vector2(-336.65f,-211f);
+        //appear.gameObject.SetActive(false);
+        //Time.timeScale = 0f; 
+        //GetComponent<RectTransform>().anchoredPosition = new Vector2(-336.65f,-211f);
     }
 
     public void CarregarMenuInicial(string sceneName)
@@ -304,7 +304,7 @@ public class playerBehaviour : CountTime
      IEnumerator Show()
      {
         yield return new WaitForSeconds(8f);
-        appear.gameObject.SetActive(true);
+        //appear.gameObject.SetActive(true);
      }
      public void quickTimeEventExit()
      {

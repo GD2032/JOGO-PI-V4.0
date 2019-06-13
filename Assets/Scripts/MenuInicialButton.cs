@@ -15,14 +15,15 @@ public class MenuInicialButton : CountTime
 
     public void CarregarJogo(string sceneNam)
     { 
-        Destroy(this.background);
-        Instantiate(fade);
         actualTime = Tempo(-1);
         sceneName = sceneNam;
+        SceneManager.LoadScene(sceneNam);
+        Instantiate(fade);
+        Destroy(this.background);
+        Destroy(this.canvas);
     }
     public float GetActualTime()
     {
         return actualTime;
     }
-
 }

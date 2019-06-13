@@ -20,7 +20,8 @@ public class CameraBehaviour : CountTime
     private float speed;
     private float xmax = 2.3f;
     private float xmin = 0.3f;
-    private float ymax = 4.769569f;
+    private float ymax = 7.5f;
+    private float ymin = -5.22f;
     [SerializeField]
     private GameObject personagem;
     private float eixoY;
@@ -36,7 +37,7 @@ public class CameraBehaviour : CountTime
         enterZoom = true;
         camera = GetComponentInChildren<Camera>();
         camera.orthographicSize = 0f;
-        speed = 6;
+        speed = 7;
         startScene = true;
         qte = false;
     }
@@ -86,9 +87,9 @@ public class CameraBehaviour : CountTime
                 {
                     transform.position = new Vector3(transform.position.x, ymax, -10);
                 }
-                if (transform.position.y < -ymax)
+                if (transform.position.y < ymin)
                 {
-                    transform.position = new Vector3(transform.position.x, -ymax, -10);
+                    transform.position = new Vector3(transform.position.x, ymin, -10);
                 }
                 if (transform.position.x > xmax)
                 {

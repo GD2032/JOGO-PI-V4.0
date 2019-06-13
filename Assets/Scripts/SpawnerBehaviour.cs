@@ -19,6 +19,7 @@ public class SpawnerBehaviour : CountTime
     [SerializeField] private GameObject predios;
     [SerializeField] private GameObject aguasVivas;
     [SerializeField] private GameObject areia;
+    [SerializeField] private GameObject ceu;
 
     void Start()
     {
@@ -28,44 +29,26 @@ public class SpawnerBehaviour : CountTime
         Personagem = GameObject.FindWithTag("Player");
     }
 
-    void Update()
-    {
-        qte = Personagem.GetComponent<playerBehaviour>().GetQte();
-        qteExit = Personagem.GetComponent<playerBehaviour>().GetQte("Exit");
-        print(qteExit);
-        if(qte && oneTimeExecut)
-        {
-            CancelInvoke();
-            InvokeRepeating("SeaSpawn", 0f, 1.5f);
-            InvokeRepeating("Sand", 0f, 1f);
-            InvokeRepeating("CoraisSpawn", 0f, 0.5f);
-            InvokeRepeating("CoralVerdeSpawn", 1.25f, 2.5f);
-            InvokeRepeating("ConchaSpawn", 1.4f, 2.5f);
-            oneTimeExecut = false;
-        }
-        if (qteExit && ExecutarUmaVez)
-        {
-            CancelInvoke();
-            Invoker();
-            ExecutarUmaVez = false;
-        }
-    }
 
     void SpawnObstaculos()
     {
         sorteio = Random.Range(0, 3);
-        Vector2 position = new Vector2(14, Random.Range(2, -6.89f));
+        Vector2 position = new Vector2(14, Random.Range(5.7f, -6.89f));
         Instantiate(lixos[sorteio], position, Quaternion.identity);
     }
     void SpawnGarrafas()
     {
         sorteio = Random.Range(0, 2);
-        Vector2 position = new Vector2(14, Random.Range(2, -6.89f));
+        Vector2 position = new Vector2(14, Random.Range(5.7f, -6.89f));
         Instantiate(garrafas[sorteio], position, Quaternion.identity);
     }
     void SeaSpawn()
     {
         Instantiate(mar, new Vector2(14, 2), Quaternion.identity);
+    }
+    void CeuSpawn()
+    {
+        Instantiate(ceu, new Vector2(14, 11.5f), Quaternion.identity);
     }
     void PrediosSpawn()
     {
@@ -74,7 +57,7 @@ public class SpawnerBehaviour : CountTime
     void BigFishSpawn()
     {
         sorteio = Random.Range(0, 4);
-        Vector2 position = new Vector2(10, Random.Range(9f, -9f));
+        Vector2 position = new Vector2(10, Random.Range(5.7f, -9f));
         Instantiate(fish[sorteio], position, Quaternion.identity);
         Instantiate(algas[3], new Vector2(10f, -9f), Quaternion.identity);
     }
@@ -98,12 +81,12 @@ public class SpawnerBehaviour : CountTime
     }
     void QteSacolaSpawn()
     {
-        Vector2 position = new Vector2(14, Random.Range(2, -6.89f));
+        Vector2 position = new Vector2(14, Random.Range(5.7f, -6.89f));
         Instantiate(sacolaQte, position, Quaternion.identity);
     }
     void AguaVivaSpawn()
     {
-        Vector2 position = new Vector2(14, Random.Range(2, -6.89f));
+        Vector2 position = new Vector2(14, Random.Range(5.7f, -6.89f));
         Instantiate(aguasVivas, position, Quaternion.identity);
     }
     void Sand()
@@ -117,6 +100,7 @@ public class SpawnerBehaviour : CountTime
         InvokeRepeating("BigFishSpawn", 4f, 5f);
         InvokeRepeating("SpawnGarrafas", 14f, 1.5f);
         InvokeRepeating("SeaSpawn", 0f, 1.5f);
+        InvokeRepeating("CeuSpawn", 0f, 1f);
         InvokeRepeating("PrediosSpawn", 0f, 1.5f);
         InvokeRepeating("SpawnObstaculos", 8f, 1.5f);
         InvokeRepeating("AguaVivaSpawn", 10f, 1.5f);
