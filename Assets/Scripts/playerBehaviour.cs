@@ -61,7 +61,7 @@ public class playerBehaviour : CountTime
     private Image rightArrow;
     [SerializeField]
     private Canvas canvas;
-     [SerializeField]
+    [SerializeField]
     private GameObject gameOver;
     void Start()
     {
@@ -70,7 +70,7 @@ public class playerBehaviour : CountTime
         instantiateQte = true;
         startTime = Time.time;
         camera = GameObject.FindWithTag("MainCamera");
-        speed = 8; 
+        speed = 8;
         opacidadee = 0;
         movimento = true;
         opacidadeRA = 0;
@@ -88,7 +88,6 @@ public class playerBehaviour : CountTime
 
     void Update()
     {
-        bolha.color = new Color(bolha.color.r, bolha.color.g, bolha.color.b, opacidadeBolha);
         StartCoroutine(Show());
         actualTime = Tempo(startTime);
         Movimentacao();
@@ -100,19 +99,19 @@ public class playerBehaviour : CountTime
             {
                 pontuacao.color = new Color(pontuacao.color.r, pontuacao.color.g, pontuacao.color.b, opacidadee);
                 opacidadee += 0.1f;
-            } 
+            }
             if (opacidadee >= 0.1 && contador < 1)
             {
-                 startTime = Time.time;
-                 actualTime = Tempo(startTime);
-                 Count = Mathf.Round(actualTime);
-                 pontuacao.text = Count.ToString();
-                 contador++;
-                   
-            }    
+                startTime = Time.time;
+                actualTime = Tempo(startTime);
+                Count = Mathf.Round(actualTime);
+                pontuacao.text = Count.ToString();
+                contador++;
+
+            }
         }
-       
-        if ( actualTime > animationF)
+
+        if (actualTime > animationF)
         {
             GetComponent<Animator>().SetBool("Comendo", false);
             GetComponent<Animator>().SetBool("Nadando", true);
@@ -121,12 +120,12 @@ public class playerBehaviour : CountTime
         }
         if (pontuacaoEnable)
         {
-             Count = Mathf.Round(actualTime) + pontuacaoFood;
-             pontuacao.text = Count.ToString();
+            Count = Mathf.Round(actualTime) + pontuacaoFood;
+            pontuacao.text = Count.ToString();
         }
-         if (Qte)
+        if (Qte)
         {
-            if(contagemRegressiva <= 0)
+            if (contagemRegressiva <= 0)
             {
                 Instantiate(fundoPreto);
                 StartCoroutine(contagemFadeOut());
@@ -151,7 +150,7 @@ public class playerBehaviour : CountTime
                     rightArrowEnabled = true;
                     leftArrowEnabled = false;
                 }
-            } 
+            }
             if (rightArrowEnabled)
             {
                 if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -171,10 +170,10 @@ public class playerBehaviour : CountTime
             leftArrow.color = new Color(leftArrow.color.r, leftArrow.color.g, leftArrow.color.b, opacidadeLA);
             rightArrow.color = new Color(rightArrow.color.r, rightArrow.color.g, rightArrow.color.b, opacidadeRA);
         }
-        if (contadorQte >= 20 )
+        if (contadorQte >= 20)
         {
-           quickTimeEventExit();
-            if(camera.GetComponent<CameraBehaviour>().GetCameraOrthograpicSize() == 5f)
+            quickTimeEventExit();
+            if (camera.GetComponent<CameraBehaviour>().GetCameraOrthograpicSize() == 5f)
             {
                 contadorQte = 0;
             }
@@ -185,11 +184,12 @@ public class playerBehaviour : CountTime
     {
         movimentoEixoX = Input.GetAxis("Horizontal");
         movimentoEixoY = Input.GetAxis("Vertical");
-        if (movimento)
-        {
-            transform.Translate(Vector3.right * movimentoEixoX * speed * Time.deltaTime, Space.World);
-            transform.Translate(Vector3.up * movimentoEixoY * speed * Time.deltaTime, Space.World);
-        }
+        print("oi");
+        //if (movimento)
+        //{
+        transform.Translate(Vector3.right * movimentoEixoX * speed * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.up * movimentoEixoY * speed * Time.deltaTime, Space.World);
+        //}
     }
     void Limite()
     {
@@ -229,12 +229,12 @@ public class playerBehaviour : CountTime
                     opac.a = 0.5f;
                     // altera a propriedade color do SpriteRenderer para corresponder à cópia com o valor alfa alterado
                     opacidade.color = opac;
-        
+
                     if (Vidas[2] == 0)
                     {
                         Instantiate(fundoPreto);
                         StartCoroutine(contagemFadeOut());
-                             
+
                     }
                     break;
                 }
@@ -256,7 +256,7 @@ public class playerBehaviour : CountTime
         animationProx = actualTime;
         animationF = animationProx + 0.5f;
     }
-      public void quickTimeEvent()
+    public void quickTimeEvent()
     {
         QteExit = false;
         movimento = false;
@@ -264,18 +264,18 @@ public class playerBehaviour : CountTime
         camera.GetComponent<CameraBehaviour>().SetZoomQte(true);
         Qte = true;
         camera.GetComponent<CameraBehaviour>().SetQte(true);
-        pontuacaoEnable = false;   
+        pontuacaoEnable = false;
     }
-   IEnumerator contagemFadeOut()
+    IEnumerator contagemFadeOut()
     {
         yield return new WaitForSeconds(0.6f);
         Destroy(this.fundoPreto);
         Instantiate(this.fundoPreto2);
         // Destroy(this.gameObject);
-         transform.position = new Vector3 (-9,0,0);
-        StartCoroutine(TeladeGameOver());  
+        transform.position = new Vector3(-9, 0, 0);
+        StartCoroutine(TeladeGameOver());
     }
-     IEnumerator TeladeGameOver()
+    IEnumerator TeladeGameOver()
     {
         yield return new WaitForSeconds(0.6f);
         GetComponent<AudioSource>().PlayOneShot(GameOver);
@@ -292,7 +292,7 @@ public class playerBehaviour : CountTime
         SceneManager.LoadScene(sceneName);
     }
 
-     public void InstantiateArrows()
+    public void InstantiateArrows()
     {
         opacidadeLA = 1.0f;
         opacidadeRA = 0.5f;
@@ -301,24 +301,24 @@ public class playerBehaviour : CountTime
         rightArrow.color = new Color(rightArrow.color.r, rightArrow.color.g, rightArrow.color.b, opacidadeRA);
         bolha.color = new Color(bolha.color.r, bolha.color.g, bolha.color.b, opacidadeBolha);
     }
-     IEnumerator Show()
-     {
+    IEnumerator Show()
+    {
         yield return new WaitForSeconds(8f);
         //appear.gameObject.SetActive(true);
-     }
-     public void quickTimeEventExit()
-     {
+    }
+    public void quickTimeEventExit()
+    {
         pontuacaoEnable = true;
         movimento = true;
         QteExit = true;
         camera.GetComponent<CameraBehaviour>().SetQte(false);
         camera.GetComponent<CameraBehaviour>().SetZoomQte(false);
         camera.GetComponent<CameraBehaviour>().SetSpeed(6);
-        camera.GetComponent<CameraBehaviour>().Zoom(2f,5f,false,false);
+        camera.GetComponent<CameraBehaviour>().Zoom(2f, 5f, false, false);
     }
     public bool GetQte(string Função = "")
     {
-        if(Função == "Exit")
+        if (Função == "Exit")
         {
             return QteExit;
         }
@@ -329,7 +329,7 @@ public class playerBehaviour : CountTime
     }
     public void SetQteExit(bool condition)
     {
-       QteExit = condition;
+        QteExit = condition;
     }
     IEnumerator ContagemQte()
     {

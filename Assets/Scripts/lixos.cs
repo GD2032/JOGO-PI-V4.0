@@ -13,7 +13,7 @@ public class lixos : CountTime
     
     void Start()
     {
-        Destroy(this.gameObject, 16);
+        Destroy(this.gameObject, 8);
     }
 
     void Update()

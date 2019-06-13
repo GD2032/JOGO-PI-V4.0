@@ -17,7 +17,7 @@ public class SpawnerBehaviour : CountTime
     [SerializeField] private GameObject[] algas;
     [SerializeField] private GameObject[] Conchas;
     [SerializeField] private GameObject predios;
-    [SerializeField] private GameObject aguasVivas;
+    [SerializeField] private GameObject[] aguasVivas;
     [SerializeField] private GameObject areia;
     [SerializeField] private GameObject ceu;
 
@@ -86,8 +86,9 @@ public class SpawnerBehaviour : CountTime
     }
     void AguaVivaSpawn()
     {
+        sorteio = Random.Range(0, 4);
         Vector2 position = new Vector2(14, Random.Range(5.7f, -6.89f));
-        Instantiate(aguasVivas, position, Quaternion.identity);
+        Instantiate(aguasVivas[sorteio], position, Quaternion.identity);
     }
     void Sand()
     {
