@@ -6,9 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuInicialButton : CountTime
 {
-   [SerializeField] private GameObject canvas;
-   [SerializeField] private GameObject fade;
-   [SerializeField] private GameObject background;
+   [SerializeField] private GameObject panel;
     private float actualTime = 10000000f;
     public static string sceneName;
     
@@ -18,9 +16,9 @@ public class MenuInicialButton : CountTime
         actualTime = Tempo(-1);
         sceneName = sceneNam;
         SceneManager.LoadScene(sceneNam);
-        Instantiate(fade);
-        Destroy(this.background);
-        Destroy(this.canvas);
+        panel.SetActive(true);
+        panel.GetComponent<Animator>().SetBool("FadeOut", true);
+        
     }
     public float GetActualTime()
     {
