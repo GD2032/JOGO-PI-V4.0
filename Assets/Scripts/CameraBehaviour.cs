@@ -16,7 +16,6 @@ public class CameraBehaviour : CountTime
     private bool enterZoom;
     private Vector3 target, limite;
     private Camera camera;
-    private float size, setLimite;
     private float speed;
     private float xmax = 2.3f;
     private float xmin = 0.3f;
@@ -25,11 +24,9 @@ public class CameraBehaviour : CountTime
     [SerializeField]
     private GameObject personagem;
     private float eixoY;
-    private bool zoomQte;
     private float percentageSpeed;
     private bool percentageSpeedEnabled;
     private bool startScene;
-    private bool qte, exitQte, exitQteLimite, limiteEnabled;
     void Start()
     {
         startTime = Time.time;
@@ -39,7 +36,6 @@ public class CameraBehaviour : CountTime
         camera.orthographicSize = 0f;
         speed = 7;
         startScene = true;
-        qte = false;
     }
     void Update()
     {
@@ -55,60 +51,30 @@ public class CameraBehaviour : CountTime
         eixoY = Input.GetAxis("Vertical");
         transform.Translate(Vector3.up * eixoY * speed * Time.deltaTime);
         Limite();
-        if (zoomQte)
-        {
-            Zoom(2f, 2.5f, speed: 8f);
-        }
     }
 
     void Limite()
     {
-        //////if(!qte)
-        ////{
-        ////   if (exitQte)
-        ////   {
-        ////        limiteEnabled = false;
-        ////        if (exitQteLimite)
-        ////        {
-        ////            SetLimite();
-        ////            exitQteLimite = false;
-        ////        }
-        ////        camera.transform.position = Vector3.MoveTowards(camera.transform.position, limite, 8f * Time.deltaTime);
-        ////        if(camera.transform.position == limite)
-        ////        {
-        ////            print("Oche");
-        ////            limiteEnabled = true;
-        ////            exitQte = false;
-        ////        }
-        ////   }
-        ////    if (limiteEnabled)
-        ////    {
-                if (transform.position.y > ymax)
-                {
-                    transform.position = new Vector3(transform.position.x, ymax, -10);
-                }
-                if (transform.position.y < ymin)
-                {
-                    transform.position = new Vector3(transform.position.x, ymin, -10);
-                }
-                if (transform.position.x > xmax)
-                {
-                    transform.position = new Vector3(xmax, transform.position.y, -10);
-                }
-                if (transform.position.x < xmin)
-                {
-                    transform.position = new Vector3(xmin, transform.position.y, -10);
-                }
-             //}
-        //}
+        if (transform.position.y > ymax)
+        {
+            transform.position = new Vector3(transform.position.x, ymax, -10);
+        }
+        if (transform.position.y < ymin)
+        {
+            transform.position = new Vector3(transform.position.x, ymin, -10);
+        }
+        if (transform.position.x > xmax)
+        {
+            transform.position = new Vector3(xmax, transform.position.y, -10);
+        }
+        if (transform.position.x < xmin)
+        {
+            transform.position = new Vector3(xmin, transform.position.y, -10);
+        }
     }
     public void SetSpeed(float newSpeed)
     {
         this.speed = newSpeed;
-    }
-    public void SetZoomQte(bool condition)
-    {
-        this.zoomQte = condition;
     }
     public void Zoom(float speedZoom, float limite, bool seguirPersonagem = true, bool zoomInside = true, bool enterZoom = true, float speed = 0f)
     {
@@ -146,84 +112,6 @@ public class CameraBehaviour : CountTime
                 percentageSpeed = 0.1f * Time.deltaTime;
             }
         }
-    }
-    public void SetQte(bool condition)
-    {
-        this.qte = condition;
-    }
-    private void SetLimite()
-    {
-        if (transform.position.y > ymax && transform.position.x > xmax)
-        {
-            setLimite = 1;
-        }
-        if (transform.position.y > ymax && transform.position.x < xmin)
-        {
-            setLimite = 2;
-        }
-        if (transform.position.y < -ymax && transform.position.x > xmax)
-        {
-            setLimite = 3;
-        }
-        if (transform.position.y < -ymax && transform.position.x < xmin)
-        {
-            setLimite = 4;
-        }
-        if (transform.position.y > ymax && transform.position.x < xmax && transform.position.x > xmin)
-        {
-            setLimite = 5;
-        }
-        if(transform.position.y < -ymax && transform.position.x < xmax && transform.position.x > xmin)
-        {
-            setLimite = 6;
-        }
-        if(transform.position.y < ymax && transform.position.y > -ymax && transform.position.x > xmax)
-        {
-            setLimite = 7;
-        }
-        if (transform.position.y < ymax && transform.position.y > -ymax && transform.position.x < xmin)
-        {
-            setLimite = 8;
-        }
-        switch (setLimite)
-        {
-            case 1:
-                limite = new Vector3(xmax, ymax, -10);
-                break;
-            case 2:
-                limite = new Vector3(xmin, ymax, -10);
-                break;
-            case 3:
-                limite = new Vector3(xmax, -ymax, -10);
-                break;
-            case 4:
-                limite = new Vector3(xmin, -ymax, -10);
-                break;
-            case 5:
-                limite = new Vector3(transform.position.x, ymax, -10);
-                break;
-            case 6:
-                limite = new Vector3(transform.position.x, -ymax, -10);
-                break;
-            case 7:
-                limite = new Vector3(xmax, transform.position.y);
-                break;
-            case 8:
-                limite = new Vector3(xmin, transform.position.y, -10);
-                break;
-            default:
-                limite = transform.position;
-                break;
-        }
-
-    }
-    public void SetExitQte(bool condition)
-    {
-        this.exitQte = condition;
-    }
-    public float GetCameraOrthograpicSize()
-    {
-        return camera.orthographicSize;
     }
 }
 

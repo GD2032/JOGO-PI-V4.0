@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6519310511344739194}
   - component: {fileID: 2772063851469899126}
   - component: {fileID: 4469890182229259660}
-  - component: {fileID: 7592250126539045325}
   - component: {fileID: 6496623980443763558}
   - component: {fileID: 2373153847387032228}
   m_Layer: 0
@@ -96,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fa7f8f5ffe5f8419ada290e5d1bb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 3
 --- !u!61 &4469890182229259660
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,19 +122,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.1145685}
   m_EdgeRadius: 0
---- !u!114 &7592250126539045325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8738621851448677573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7d6523935e0156459a200349ce3132d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
 --- !u!50 &6496623980443763558
 Rigidbody2D:
   serializedVersion: 4
@@ -149,7 +136,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0

@@ -5,18 +5,42 @@ using UnityEngine;
 
 public class medusaBehaviour : CountTime
 {
-    float aceleracao;
+    [SerializeField] float speed;
+    int move = 1;
     void Start()
     {
-        aceleracao = 1.5f;
+        StartCoroutine("ChangeMoveInfinite");
     }
     void Update()
     {
-        transform.position += new Vector3(-2f, 0) * aceleracao *  Time.deltaTime;
-        aceleracao -= 0.02f;
-        if (aceleracao <= 0.1)
+        switch (move)
         {
-            aceleracao = 1.4f;
+            case 1:
+                GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, speed);
+                break;
+            case 2:
+                GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, -speed);
+                break;
+            default:
+                GetComponent< Rigidbody2D>().velocity = new Vector2(-speed, 0);
+                break;
         }
     }
+    IEnumerator ChangeMoveInfinite()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            move = ChangeMove(move);
+        }
+        
+    }
+    private void OnTriggerEnter2D(Collider col)
+    {
+        if(col.tag == "Player")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    private int ChangeMove(int move) => move == 1 ? 2 : 1;
 }

@@ -16,10 +16,5 @@ public class FadeIN : CountTime
         {
             Destroy(this.gameObject);
         }
-
-        if (actualTime >=6 && gameObject.tag == "Pontuacao")
-        {
-            
-        }
     }
 }
