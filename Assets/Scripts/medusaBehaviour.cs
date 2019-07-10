@@ -35,7 +35,7 @@ public class medusaBehaviour : CountTime
         }
         
     }
-    private void OnTriggerEnter2D(Collider col)
+    public void OnTriggerEnter2D(Collider2D col)
     {
         if(col.tag == "Player")
         {

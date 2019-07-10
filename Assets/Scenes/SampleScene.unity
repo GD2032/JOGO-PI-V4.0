@@ -138,7 +138,7 @@ Transform:
   m_GameObject: {fileID: 161753782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.782, y: 3.224, z: 0.006}
-  m_LocalScale: {x: 1.3724989, y: 1.3724989, z: 1.3724989}
+  m_LocalScale: {x: 2000, y: 2000, z: 1.3724989}
   m_Children: []
   m_Father: {fileID: 1578011143}
   m_RootOrder: 0
@@ -551,8 +551,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: -0.0089334, y: -0.0089334, z: -0.0089334}
-  m_Children:
-  - {fileID: 1578011143}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -731,6 +730,7 @@ GameObject:
   - component: {fileID: 873874948}
   - component: {fileID: 873874947}
   - component: {fileID: 873874946}
+  - component: {fileID: 873874949}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -750,42 +750,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ccd35e20eb13b48a473f6debc2a7b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Personagem: {fileID: 0}
   lixos:
   - {fileID: 7975933541953886869, guid: d135a4d59b5ff0c4d8ffd6cdede5a2aa, type: 3}
   - {fileID: 2249571302569442548, guid: 19126d903c3fb80409249073bdae512a, type: 3}
   - {fileID: 2077212701494094109, guid: 26f8fba7a86ca1a47ab8eb742d84afe1, type: 3}
   - {fileID: 6500766832212073348, guid: 840757ba7eda4874e89639dcc0113f06, type: 3}
-  sacolaQte: {fileID: 0}
   garrafas:
   - {fileID: 3737881972081160653, guid: 59ca9018780e67a40a8a70fd3fe40d9d, type: 3}
   - {fileID: 6974303023543822486, guid: 4d23bf2357f7cba48b7c40a82175ff67, type: 3}
-  mar: {fileID: 4045299536566814720, guid: d9d434d74e630d6459e4795ff251ecdb, type: 3}
-  fish:
-  - {fileID: 4704146879406065687, guid: b5d39c5038c49e14b935b834f78d7f3c, type: 3}
-  - {fileID: 6501588731236599327, guid: 734f3dda182a36f4597dceafa7f6f2fb, type: 3}
-  - {fileID: 1343255535465078072, guid: e3dabdb06f785b442aea3f99a2e7c55d, type: 3}
-  - {fileID: 1184428697044890840, guid: 822219bd50721fb48b683575f80fa55f, type: 3}
-  algas:
-  - {fileID: 4248209144460661273, guid: 7eb66eddf05a85447a329b9de8d0fb10, type: 3}
-  - {fileID: 4081768695768777043, guid: 4b7da2568a82f2a4f8270b58bd6995ae, type: 3}
-  - {fileID: 5525808229003189846, guid: 5db38cb4a1710f4448eaf62a88126a19, type: 3}
-  - {fileID: 5145542185062246310, guid: 142731181d95ba6429caea9f5b87cf6a, type: 3}
-  - {fileID: 3978547240391194073, guid: 7b2ecc65fe0d34f4b8eaebf654622734, type: 3}
-  - {fileID: 6449978120402734493, guid: 81582855f9db8cb4584245f9451bde34, type: 3}
-  - {fileID: 6856876412120870923, guid: 73ae434dfb38ec7499036e459ec2ea23, type: 3}
-  - {fileID: 6009505810120865562, guid: fc7559f461e22bb41ae9046377f3ccf1, type: 3}
-  Conchas:
-  - {fileID: 2567533413265527911, guid: 5dc04e2144d47a74483a3bacd0fc3f43, type: 3}
-  - {fileID: 9018698415738885754, guid: 94532012ad66e624d85cab79351ea17f, type: 3}
-  predios: {fileID: 1814382815613465936, guid: d51e106dadbb09548913931cc5e96643, type: 3}
   aguasVivas:
   - {fileID: 8738621851448677573, guid: 40f48d0a58b1e0e4fb4abef4e4dc6132, type: 3}
   - {fileID: 8738621851448677573, guid: 40f48d0a58b1e0e4fb4abef4e4dc6132, type: 3}
   - {fileID: 8738621851448677573, guid: 40f48d0a58b1e0e4fb4abef4e4dc6132, type: 3}
   - {fileID: 8738621851448677573, guid: 40f48d0a58b1e0e4fb4abef4e4dc6132, type: 3}
-  areia: {fileID: 1295028145034408134, guid: e3554dcec8877124caf4cddf3dff5abb, type: 3}
-  ceu: {fileID: 8173477853277237788, guid: 95fe293e27c937f40b26f6eb80887bf4, type: 3}
 --- !u!212 &873874947
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -848,6 +825,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &873874949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873874945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31dc7a10158cb1f44b7db7dc863cd84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mar: {fileID: 4045299536566814720, guid: d9d434d74e630d6459e4795ff251ecdb, type: 3}
+  fish:
+  - {fileID: 6501588731236599327, guid: 734f3dda182a36f4597dceafa7f6f2fb, type: 3}
+  - {fileID: 4704146879406065687, guid: b5d39c5038c49e14b935b834f78d7f3c, type: 3}
+  - {fileID: 1343255535465078072, guid: e3dabdb06f785b442aea3f99a2e7c55d, type: 3}
+  - {fileID: 1184428697044890840, guid: 822219bd50721fb48b683575f80fa55f, type: 3}
+  algas:
+  - {fileID: 5525808229003189846, guid: 5db38cb4a1710f4448eaf62a88126a19, type: 3}
+  - {fileID: 5145542185062246310, guid: 142731181d95ba6429caea9f5b87cf6a, type: 3}
+  - {fileID: 3978547240391194073, guid: 7b2ecc65fe0d34f4b8eaebf654622734, type: 3}
+  - {fileID: 6009505810120865562, guid: fc7559f461e22bb41ae9046377f3ccf1, type: 3}
+  - {fileID: 6856876412120870923, guid: 73ae434dfb38ec7499036e459ec2ea23, type: 3}
+  - {fileID: 6449978120402734493, guid: 81582855f9db8cb4584245f9451bde34, type: 3}
+  - {fileID: 4081768695768777043, guid: 4b7da2568a82f2a4f8270b58bd6995ae, type: 3}
+  - {fileID: 4248209144460661273, guid: 7eb66eddf05a85447a329b9de8d0fb10, type: 3}
+  Conchas:
+  - {fileID: 2567533413265527911, guid: 5dc04e2144d47a74483a3bacd0fc3f43, type: 3}
+  - {fileID: 9018698415738885754, guid: 94532012ad66e624d85cab79351ea17f, type: 3}
+  areia: {fileID: 1295028145034408134, guid: e3554dcec8877124caf4cddf3dff5abb, type: 3}
+  ceu: {fileID: 8173477853277237788, guid: 95fe293e27c937f40b26f6eb80887bf4, type: 3}
 --- !u!1 &930356582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,14 +1795,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578011142}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.78, y: 0.12535435, z: 9.994218}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -9.978607, y: 3.5465598, z: -10.089282}
+  m_LocalScale: {x: -0.0089334, y: -0.0089334, z: -0.0089334}
   m_Children:
   - {fileID: 161753783}
   - {fileID: 1979230098}
   - {fileID: 575742676}
-  m_Father: {fileID: 519420032}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1979230097
 GameObject:
