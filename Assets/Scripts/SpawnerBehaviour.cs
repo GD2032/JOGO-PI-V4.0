@@ -17,7 +17,6 @@ public class SpawnerBehaviour : CountTime
     }
     void SpawnObstaculos()
     {
-        CancelInvoke();
         sorteio = Random.Range(0, 3);
         Vector2 position = new Vector2(14, Random.Range(5.7f, -6.89f));
         Instantiate(lixos[sorteio], position, Quaternion.identity);

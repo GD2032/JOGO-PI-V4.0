@@ -193,7 +193,7 @@ public class playerBehaviour : CountTime
         yield return new WaitForSeconds(0.6f);
         GetComponent<AudioSource>().PlayOneShot(GameOver);
         gameOver.SetActive(true);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         CarregarMenuInicial("Titlescreen");
         //appear.gameObject.SetActive(false);
         //Time.timeScale = 0f; 
