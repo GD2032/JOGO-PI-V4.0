@@ -4,65 +4,74 @@ using UnityEngine;
 
 public class MenuScrippt : MonoBehaviour
 {
-    enum Botao {jogar,creditos,sair};
-    private Botao botaoAtual;
-    [SerializeField] private Botao botaoArrojado;
-    private float input;
+    [SerializeField] private GameObject[] botoes;
+    [SerializeField] private GameObject botaoAtual, seta;
+    [SerializeField]private Animator[] animators;
     private bool subir;
-    private bool enabled;
-    private bool cooldown = true;
-    // Start is called before the first frame update
+    private float input;
+    private static float index;
+    private bool cooldown;
     void Start()
     {
-        botaoAtual = Botao.jogar;
+        botaoAtual.tag = botoes[0].tag;
+        animacao();
+        cooldown = true;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        enabledChange(botaoAtual,botaoArrojado);
-        input = Input.GetAxis("Vertical") * Time.deltaTime;
-        if (input != 0 && cooldown)
+        input = Input.GetAxis("Vertical");
+        if(input != 0 && cooldown)
         {
-            subir = Subir(input);
-            enabled = enabledChange(botaoAtual,botaoArrojado);
-            botaoAtual = Movimento(subir);
-
-            Animacao();
+            subir = TesteSubir(input);
+            botaoAtual.tag = Movimento(subir);
             cooldown = false;
+            StartCoroutine("SetCooldown");
+            animacao();
         }
-        StartCoroutine("BaixoLegal");
     }
-    private bool Subir(float input) => input > 0 ? true : false;
-
-    private Botao Movimento(bool subir)
+    private string Movimento(bool subir)
     {
-        if(botaoAtual == Botao.jogar)
-            return Botao.creditos;
-        else if(botaoAtual == Botao.creditos)
-            return Botao.jogar;
-        else
+        if(botaoAtual.tag == botoes[0].tag && subir)
+            return botoes[botoes.Length - 1].tag;
+        else if(botaoAtual.tag == botoes[botoes.Length - 1].tag && !subir)
+            return botoes[0].tag;
+        for(int i = 0; i < botoes.Length; i++)
         {
-            return botaoAtual;
-        }        
+            if(subir)
+            {
+                if(botaoAtual.tag == botoes[i].tag)
+                {
+                    index = --i;
+                    return botoes[i].tag;
+                }
+            }
+            else
+            {
+                if(botaoAtual.tag == botoes[i].tag)
+                {
+                    index = ++i;
+                    return botoes[i].tag;               
+                }
+            }
+        }
+        return botaoAtual.tag;
     }
-    private void Animacao()
+    private bool TesteSubir(float input) => input > 0;
+    private void animacao()
     {
-        if(enabled)
-            GetComponent<Animator>().SetBool("Enabled",true);
-        else
-            GetComponent<Animator>().SetBool("Enabled",false);
+        switch(index)
+        {
+            case 0:
+               seta.transform.position = new Vector3(0,0); 
+            break;
+            case 1:
+                seta.transform.position = new Vector3(0,10.5f);
+            break;
+        }
     }
-    private bool enabledChange(Botao botaoAtual, Botao botaoArrojado)
+    IEnumerator SetCooldown()
     {
-        if(botaoAtual == botaoArrojado)
-            return true;
-        else
-            return false;
-    }
-    IEnumerator BaixoLegal()
-    {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
         cooldown = true;
     }
 }

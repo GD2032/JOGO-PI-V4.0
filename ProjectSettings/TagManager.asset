@@ -10,8 +10,8 @@ TagManager:
   - AberturaCena
   - C1
   - C2
-  - topo
-  - base
+  - Bjogar
+  - Bcreditos
   layers:
   - Default
   - TransparentFX

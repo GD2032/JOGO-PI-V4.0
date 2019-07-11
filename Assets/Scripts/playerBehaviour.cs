@@ -142,6 +142,7 @@ public class playerBehaviour : CountTime
         if (colapse.tag == "Sacola")
         {
             GamePad.SetVibration(playerConsole, 1, 1);
+            StartCoroutine("SetCooldown");
             camera.GetComponent<Animator>().SetTrigger("Shake");
             for (int i = 0; i < 3; i++)
             {
@@ -208,5 +209,9 @@ public class playerBehaviour : CountTime
     {
         yield return new WaitForSeconds(8f);
         //appear.gameObject.SetActive(true);
+    }
+    IEnumerator SetCooldown(){
+        yield return new WaitForSeconds(1f);
+        GamePad.SetVibration(playerConsole,0,0);
     }
 }
