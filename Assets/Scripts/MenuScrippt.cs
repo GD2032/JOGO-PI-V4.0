@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuScrippt : MonoBehaviour
 {
     [SerializeField] private GameObject[] botoes;
     [SerializeField] private GameObject botaoAtual, seta;
-    [SerializeField]private Animator[] animators;
+    [SerializeField] private Animator[] animators;
+    [SerializeField] private Animator trocarCena; 
     private bool subir;
     private float input;
     private static float index;
@@ -28,13 +30,20 @@ public class MenuScrippt : MonoBehaviour
             StartCoroutine("SetCooldown");
             animacao();
         }
+        ControleBotoes();
     }
     private string Movimento(bool subir)
     {
         if(botaoAtual.tag == botoes[0].tag && subir)
+        {
+            index = 1;
             return botoes[botoes.Length - 1].tag;
+        }
         else if(botaoAtual.tag == botoes[botoes.Length - 1].tag && !subir)
+        {
+            index = 0;
             return botoes[0].tag;
+        }
         for(int i = 0; i < botoes.Length; i++)
         {
             if(subir)
@@ -65,7 +74,7 @@ public class MenuScrippt : MonoBehaviour
                seta.transform.position = new Vector3(0,0); 
             break;
             case 1:
-                seta.transform.position = new Vector3(0,10.5f);
+                seta.transform.position = new Vector3(0,-1.5f);
             break;
         }
     }
@@ -73,5 +82,13 @@ public class MenuScrippt : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         cooldown = true;
+    }
+    private void ControleBotoes()
+    {
+        if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0)) && botaoAtual.tag == "Bjogar")
+        {
+            print("oi");
+            trocarCena.SetBool("jogarPress", true);            
+        }
     }
 }
