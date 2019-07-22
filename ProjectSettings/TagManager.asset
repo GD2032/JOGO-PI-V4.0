@@ -12,6 +12,8 @@ TagManager:
   - C2
   - Bjogar
   - Bcreditos
+  - Bplacar
+  - Bsair
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,9 @@ public class SceneBehaviour : MonoBehaviour
 {
     private void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        if(sceneName == "Exit")
+            Application.Quit();
+        else
+            SceneManager.LoadScene(sceneName);
     }
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MenuSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject peixes;
+    [SerializeField] private GameObject[] peixes;
+    private Vector2 position;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class MenuSpawner : MonoBehaviour
     }
     void invokePeixes()
     {
-        Destroy(Instantiate(peixes,new Vector2(0f,0f), Quaternion.identity), 4f);
+        position = new Vector2(9,Random.Range(3.77f,-3.77f));
+        Destroy(Instantiate(peixes[Random.Range(0, 4)],position, Quaternion.identity), 4f);
     }
 }

@@ -85,10 +85,21 @@ public class MenuScrippt : MonoBehaviour
     }
     private void ControleBotoes()
     {
-        if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0)) && botaoAtual.tag == "Bjogar")
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
         {
-            print("oi");
-            trocarCena.SetBool("jogarPress", true);            
+            switch(botaoAtual.tag)
+            {
+                case "Bjogar":
+                    trocarCena.SetBool("jogarPress", true);
+                    break;
+                case "Bcreditos":
+                    break;
+                case "Bplacar":
+                    break;
+                case "Bsair":
+                    break;
+            }
+
         }
     }
 }
