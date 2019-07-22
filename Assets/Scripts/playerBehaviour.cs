@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts;
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ public class playerBehaviour : CountTime
     private int[] Vidas = new int[3] { 1, 1, 1 };
     [SerializeField]
     private Text pontuacao;
+    [SerializeField] private string[] nomeDoJogador;
+    [SerializeField] private string[] localDoSave;
     private float Count;
     private GameObject sacola;
     private GameObject aguaViva;
@@ -46,6 +49,7 @@ public class playerBehaviour : CountTime
     private float contador = 0;
     private float pontuacaoFood;
     private bool pontuacaoEnable = true;
+    [SerializeField] private float[] pont;
     [SerializeField]
     private Image leftArrow;
     [SerializeField]
@@ -67,11 +71,14 @@ public class playerBehaviour : CountTime
         Coracao[1] = GameObject.FindWithTag("C2");
         Coracao[2] = GameObject.FindWithTag("C3");
         GetComponent<AudioSource>().clip = ComendoSom;
+        for (int i = 0; i < pont.Length; i++)
+        {
+            pont[i] = PlayerPrefs.GetFloat(localDoSave[i]);
+        }
     }
 
     void Update()
     {
-        StartCoroutine(Show());
         actualTime = Tempo(startTime);
         Movimentacao();
         Limite();
@@ -194,7 +201,14 @@ public class playerBehaviour : CountTime
         yield return new WaitForSeconds(0.6f);
         GetComponent<AudioSource>().PlayOneShot(GameOver);
         gameOver.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
+        print("oi");
+        Array.Sort(pont);
+        for (int i = 0;  i < pont.Length; i++)
+        { 
+            PlayerPrefs.SetFloat(localDoSave[i], pont[i]);
+        }
+        print("hi");
         CarregarMenuInicial("Titlescreen");
         //appear.gameObject.SetActive(false);
         //Time.timeScale = 0f; 

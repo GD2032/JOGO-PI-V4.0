@@ -11,5 +11,9 @@ public class SceneBehaviour : MonoBehaviour
             Application.Quit();
         else
             SceneManager.LoadScene(sceneName);
+        if(sceneName == "CreditosScene")
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 }

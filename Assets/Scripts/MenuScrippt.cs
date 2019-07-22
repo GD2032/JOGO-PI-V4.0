@@ -18,9 +18,11 @@ public class MenuScrippt : MonoBehaviour
         botaoAtual.tag = botoes[0].tag;
         animacao();
         cooldown = true;
+        seta.transform.position = new Vector3(-6.51f, -0.12f);
     }
     void Update()
     {
+        trocarCena.SetBool("BlendTrue", true);
         input = Input.GetAxis("Vertical");
         if(input != 0 && cooldown)
         {
@@ -36,7 +38,7 @@ public class MenuScrippt : MonoBehaviour
     {
         if(botaoAtual.tag == botoes[0].tag && subir)
         {
-            index = 1;
+            index = 3;
             return botoes[botoes.Length - 1].tag;
         }
         else if(botaoAtual.tag == botoes[botoes.Length - 1].tag && !subir)
@@ -71,11 +73,17 @@ public class MenuScrippt : MonoBehaviour
         switch(index)
         {
             case 0:
-               seta.transform.position = new Vector3(0,0); 
+               seta.transform.position = new Vector3(-6.51f,-0.12f); 
             break;
             case 1:
-                seta.transform.position = new Vector3(0,-1.5f);
+                seta.transform.position = new Vector3(-6.51f,-3.27f);
             break;
+            case 2:
+                seta.transform.position = new Vector3(1.19f, -0.12f);
+                break;
+            case 3:
+                seta.transform.position = new Vector3(1.19f, -3.27f);
+                break;
         }
     }
     IEnumerator SetCooldown()
@@ -90,13 +98,16 @@ public class MenuScrippt : MonoBehaviour
             switch(botaoAtual.tag)
             {
                 case "Bjogar":
-                    trocarCena.SetBool("jogarPress", true);
+                    SceneManager.LoadScene("SampleScene");
                     break;
                 case "Bcreditos":
+                    SceneManager.LoadScene("CreditosScene");
                     break;
                 case "Bplacar":
+                    SceneManager.LoadScene("PlacarScene");
                     break;
                 case "Bsair":
+                    Application.Quit();
                     break;
             }
 
