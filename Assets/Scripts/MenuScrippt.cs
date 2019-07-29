@@ -104,7 +104,7 @@ public class MenuScrippt : MonoBehaviour
                 case "Bjogar":
                     SceneManager.LoadScene("SampleScene");
                     break;
-                case "Bopcoes"
+                case "Bopcoes":
                     break;
                 case "Bcreditos":
                     SceneManager.LoadScene("CreditosScene");
