@@ -12,11 +12,10 @@ public class placarController : MonoBehaviour
     {
         for (int  i = 0;  i < colocacoes.Length;  i++)
         {
+            print(PlayerPrefs.GetFloat(localDoSave[i]));
             colocacoes[i].text = PlayerPrefs.GetFloat(localDoSave[i]).ToString();
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
     }

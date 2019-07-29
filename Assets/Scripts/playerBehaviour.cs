@@ -198,17 +198,27 @@ public class playerBehaviour : CountTime
     }
     IEnumerator TeladeGameOver()
     {
-        yield return new WaitForSeconds(0.6f);
-        GetComponent<AudioSource>().PlayOneShot(GameOver);
         gameOver.SetActive(true);
-        yield return new WaitForSeconds(4f);
-        print("oi");
+        Array.Sort(pont);
+        for (int i = 0; i < pont.Length; i++)
+        {
+            if (pont[i] != null)
+            {
+                pont[i] = Count;
+                break;
+            }       
+            else if (Count > pont[i])
+            {
+                pont[i] = Count;
+            }
+        }
         Array.Sort(pont);
         for (int i = 0;  i < pont.Length; i++)
-        { 
+        {
             PlayerPrefs.SetFloat(localDoSave[i], pont[i]);
         }
-        print("hi");
+        yield return new WaitForSeconds(4f);
+       
         CarregarMenuInicial("Titlescreen");
         //appear.gameObject.SetActive(false);
         //Time.timeScale = 0f; 

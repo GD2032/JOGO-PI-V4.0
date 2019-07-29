@@ -14,6 +14,7 @@ TagManager:
   - Bcreditos
   - Bplacar
   - Bsair
+  - Bopcoes
   layers:
   - Default
   - TransparentFX

@@ -1101,10 +1101,10 @@ MonoBehaviour:
   GameOver: {fileID: 8300000, guid: a914f8894d2e6d34381fb8600000a859, type: 3}
   Vazio: {fileID: 0}
   pont:
-  - 3
-  - 2
-  - 5
-  - 1
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   leftArrow: {fileID: 0}
   rightArrow: {fileID: 0}

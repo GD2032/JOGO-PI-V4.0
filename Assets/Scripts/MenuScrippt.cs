@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuScrippt : MonoBehaviour
 {
     [SerializeField] private GameObject[] botoes;
-    [SerializeField] private GameObject botaoAtual, seta;
+    [SerializeField] private GameObject botaoAtual;
     [SerializeField] private Animator[] animators;
-    [SerializeField] private Animator trocarCena; 
+    [SerializeField] private Animator trocarCena;
+    [SerializeField] private Image select;
     private bool subir;
     private float input;
     private static float index;
@@ -18,11 +20,10 @@ public class MenuScrippt : MonoBehaviour
         botaoAtual.tag = botoes[0].tag;
         animacao();
         cooldown = true;
-        seta.transform.position = new Vector3(-6.51f, -0.12f);
+        select.transform.localPosition = new Vector3(219.1f, 150.4f);
     }
     void Update()
     {
-        trocarCena.SetBool("BlendTrue", true);
         input = Input.GetAxis("Vertical");
         if(input != 0 && cooldown)
         {
@@ -38,7 +39,7 @@ public class MenuScrippt : MonoBehaviour
     {
         if(botaoAtual.tag == botoes[0].tag && subir)
         {
-            index = 3;
+            index = 4;
             return botoes[botoes.Length - 1].tag;
         }
         else if(botaoAtual.tag == botoes[botoes.Length - 1].tag && !subir)
@@ -73,16 +74,19 @@ public class MenuScrippt : MonoBehaviour
         switch(index)
         {
             case 0:
-               seta.transform.position = new Vector3(-6.51f,-0.12f); 
+               select.transform.localPosition = new Vector3(219.1f,150.4f); 
             break;
             case 1:
-                seta.transform.position = new Vector3(-6.51f,-3.27f);
+                select.transform.localPosition = new Vector3(219.1f,67f);
             break;
             case 2:
-                seta.transform.position = new Vector3(1.19f, -0.12f);
+                select.transform.localPosition = new Vector3(219.1f, -12f);
                 break;
             case 3:
-                seta.transform.position = new Vector3(1.19f, -3.27f);
+                select.transform.localPosition = new Vector3(219.1f, -92f);
+                break;
+            case 4:
+                select.transform.localPosition = new Vector3(219.1f, -174);
                 break;
         }
     }
@@ -99,6 +103,8 @@ public class MenuScrippt : MonoBehaviour
             {
                 case "Bjogar":
                     SceneManager.LoadScene("SampleScene");
+                    break;
+                case "Bopcoes"
                     break;
                 case "Bcreditos":
                     SceneManager.LoadScene("CreditosScene");
