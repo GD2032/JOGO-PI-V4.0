@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class CameraBehaviour : CountTime
 {
-
-    //public float zoomSpeed ;
-    //public float smoothSpeed = 30.0f;
-    // public float minRange = 1.9f;
-    //public float target;
-
     private float force;
     private float speedZoom;
     private bool enterZoom;
@@ -19,8 +13,8 @@ public class CameraBehaviour : CountTime
     private float speed;
     private float xmax = 2.3f;
     private float xmin = 0.3f;
-    private float ymax = 7.5f;
-    private float ymin = -5.22f;
+    [SerializeField]private float ymax = 7.5f;
+    [SerializeField]private float ymin = -5.22f;
     [SerializeField]
     private GameObject personagem;
     private float eixoY;

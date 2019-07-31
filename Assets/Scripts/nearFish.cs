@@ -13,10 +13,8 @@ public class nearFish : CountTime
 
     void Update()
     {
-        transform.position += new Vector3(-5, 0) * Time.deltaTime  ;
+        transform.Translate(new Vector3(-6 * Time.deltaTime, 0));
         if (transform.position.x < -10f)
-        {
             Destroy(this.gameObject);
-        }
     }
 }

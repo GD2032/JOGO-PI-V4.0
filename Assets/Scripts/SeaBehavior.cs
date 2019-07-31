@@ -5,16 +5,32 @@ using UnityEngine;
 
 public class SeaBehavior : CountTime
 {
-    void Start()
+    private float mountainSpeed,seaSpeed,predioSpeed, areiaSpeed;
+    private void Start()
     {
+        seaSpeed = 6;
+        mountainSpeed = 2;
+        predioSpeed = 4;
+        areiaSpeed = 6;
     }
-
     void Update()
     {
-        transform.position += new Vector3(-9, 0) * Time.deltaTime;
-        if(transform.position.x <= -30)
+        switch (gameObject.tag)
         {
-            Destroy(gameObject);
+            case "Mountain":
+                transform.Translate(new Vector3(-mountainSpeed * Time.deltaTime, 0f));
+                break;
+            case "Sea":
+                transform.Translate(new Vector3(-seaSpeed * Time.deltaTime, 0f));
+                break;
+            case "Predios":
+                transform.Translate(new Vector3(-predioSpeed * Time.deltaTime, 0f));
+                break;
+            case "Areia":
+                transform.Translate(new Vector3(-areiaSpeed * Time.deltaTime, 0f));
+                break;
         }
+        if(transform.position.x <= -30)
+            Destroy(gameObject);
     }
 }

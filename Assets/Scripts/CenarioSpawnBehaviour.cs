@@ -9,17 +9,13 @@ public class CenarioSpawnBehaviour : MonoBehaviour
     [SerializeField] private GameObject[] fish;
     [SerializeField] private GameObject[] algas;
     [SerializeField] private GameObject[] Conchas;
-    [SerializeField] private GameObject areia;
+    [SerializeField] private GameObject areia, mountain;
     [SerializeField] private GameObject ceu;
     void Start()
     {
         invoke();
     }
 
-    void Update()
-    {
-        
-    }
     void SeaSpawn()
     {
         Instantiate(mar, new Vector2(14, 2), Quaternion.identity);
@@ -58,8 +54,13 @@ public class CenarioSpawnBehaviour : MonoBehaviour
         Vector2 position = new Vector2(10f, -9.7f);
         Instantiate(areia, position, Quaternion.identity);
     }
+    void MountainSpawn()
+    {
+        Instantiate(mountain,new Vector2(16, 13f), Quaternion.identity);
+    }
     void invoke()
     {
+        InvokeRepeating("MountainSpawn", 0f, 10f);
         InvokeRepeating("Sand", 0f, 1f);
         InvokeRepeating("BigFishSpawn", 4f, 5f);
         InvokeRepeating("SeaSpawn", 0f, 1.5f);

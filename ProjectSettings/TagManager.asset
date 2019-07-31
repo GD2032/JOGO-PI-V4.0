@@ -15,6 +15,10 @@ TagManager:
   - Bplacar
   - Bsair
   - Bopcoes
+  - Mountain
+  - Sea
+  - Predios
+  - Areia
   layers:
   - Default
   - TransparentFX

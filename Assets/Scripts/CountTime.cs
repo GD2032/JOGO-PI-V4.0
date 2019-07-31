@@ -11,9 +11,6 @@ namespace Assets.Scripts
     {
         protected float startTime;
         protected float actualTime;
-        public float Tempo(float startTime)
-        {
-            return actualTime = Time.time - startTime;
-        }
+        public float Tempo(float startTime) => actualTime = Time.time - startTime;
     }  
 }
